@@ -1,0 +1,32 @@
+.highlights {
+  padding: 0 20px;
+}
+.highlights-wrapper {
+  margin: 0 auto;
+  max-width: 1003px;
+}
+.highlights-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.highlights-header h2 {
+  margin: 0;
+  color: #495e57;
+  font: 36px/1 "Times New Roman", Times, serif;
+}
+.highlights-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: row;
+}
+.highlights-list > div {
+  flex: 1;
+}
+@media (max-width: 640px) {
+  .highlights-list {
+    flex-direction: column;
+  } 
+}

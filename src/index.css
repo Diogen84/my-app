@@ -7,8 +7,8 @@ body {
 body {
   margin: 0;
   font: 10px arial, helvetica, sans-serif;
-  background: #edefee;
-  color: #333;
+  background: var(--color-secondary-3);
+  color: var(--color-secondary-4);
 }
 
 a {
@@ -23,14 +23,38 @@ a {
   }
 }
 
+:root {
+  --max-width: 1003px;
+  --gap: 20px;
+
+  --color-primary-1: #495e57;
+  --color-primary-2: #f4ce14;
+  --color-secondary-1: #ee9972;
+  --color-secondary-2: #fbdabb;
+  --color-secondary-3: #edefee;
+  --color-secondary-4: #333;
+
+  --border-radius: 8px;
+
+  --font-btn: bold 18px/1 arial, hevletica, sans-serif;
+
+  --font-title-1: 64px/1 "Times New Roman", Times, serif;
+  --font-title-2: 36px/1 "Times New Roman", Times, serif;
+  --font-title-3: bold 18px/1 arial, helvetica, sans-serif;
+
+  --font-text-1: 22px/1.2 Arial, Helvetica, sans-serif;
+  --font-text-2: 18px/1 "Times New Roman", Times, serif;
+  --font-text-3: 16px/1.5 Arial, Helvetica, sans-serif;
+}
+
 .btn {
-  background: #f4ce14;
-  color: #333;
+  background: var(--color-primary-2);
+  color: var(--color-secondary-4);
   text-align: center;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font: bold 18px/1 arial, hevletica, sans-serif;
+  border-radius: var(--border-radius);
+  padding: calc(var(--gap) / 2) var(--gap);
+  font: var(--font-btn);
   display: block;
   cursor: pointer;
   transition: background-color 0.3s ease-out;
@@ -38,7 +62,7 @@ a {
 
 @media (hover:hover) {
   .btn:hover {
-    background: #ee9972;
-    color: #333;
+    background: var(--color-secondary-1);
+    color: var(--color-secondary-4);
   }
 }

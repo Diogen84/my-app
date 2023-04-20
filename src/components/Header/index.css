@@ -1,12 +1,16 @@
 header {
-  padding: 20px;
-  position: relative;
+  padding: var(--gap);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-secondary-3);
+  box-shadow: 2px 0 2px var(--color-secondary-4);
 }
 header > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1003px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 

@@ -1,0 +1,43 @@
+.testimonial-item {
+  padding: var(--gap);
+  background: var(--color-secondary-4);
+  color: var(--color-secondary-3);
+  width: 180px;
+  font: var(--font-text-2);
+}
+.testimonial-item-rating {
+  display: flex;
+}
+.testimonial-item-rating img {
+  display: block;
+}
+.testimonial-item-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin: calc(var(--gap) / 2) 0 0;
+}
+.testimonial-item-details > * {
+  flex: 1;
+}
+.testimonial-item-image {
+  
+}
+.testimonial-item-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.testimonial-item-name {
+
+}
+.testimonial-item-name p {
+  margin: calc(var(--gap) / 2) 0 0;
+}
+.testimonial-item-name p:first-child {
+  margin: 0;
+}
+.testimonial-item-review {
+  margin: var(--gap) 0 0;
+}

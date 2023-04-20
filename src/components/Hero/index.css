@@ -1,34 +1,34 @@
 .hero {
-  background: #495e57;
-  color: #edefee;
-  font: 22px/1.2 Arial, Helvetica, sans-serif;
-  padding: 50px 20px;
-  margin: 0 0 20px;
+  background: var(--color-primary-1);
+  color: var(--color-secondary-3);
+  font: var(--font-text-1);
+  padding: 50px var(--gap);
+  margin: 0 0 var(--gap);
 }
 .hero-wrapper {
-  max-width: 1003px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .hero h2 {
-  font: 64px/1 "Times New Roman", Times, serif;
-  color: #f4ce14;
+  font: var(--font-title-1);
+  color: var(--color-primary-2);
   margin: 0;
 }
 .hero h3 {
-  font: 36px/1 "Times New Roman", Times, serif;
+  font: var(--font-title-2);
   margin: 0 0 15px;
 }
 .hero p {
   margin: 0 0 15px;
 }
 .hero-image {
-  padding-top: 20px;
+  padding-top: var(--gap);
 }
 .hero-image img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   max-height: 200px;
   object-fit: cover;
 }

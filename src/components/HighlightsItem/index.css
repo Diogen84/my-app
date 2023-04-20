@@ -1,8 +1,8 @@
 .highlights-item {
-  font: 16px/1.5 Arial, Helvetica, sans-serif;
+  font: var(--font-text-3);
   display: flex;
   flex-direction: column;
-  padding: 0 0 20px;
+  padding: 0 0 var(--gap);
 }
 .highlights-item-img {
   position: relative;
@@ -15,38 +15,38 @@
   top: 0;
   left: 0;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 .highlights-item-heading {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 0 0;
+  padding: var(--gap) 0 0;
 }
 .highlights-item-heading h3 {
-  font: 18px/1 Arial, Helvetica, sans-serif;
+  font: var(--font-title-3);
   margin: 0;
 }
 .highlights-item-price {
-  padding: 0 0 0 10px;
-  color: #ee9972;
+  padding: 0 0 0 calc(var(--gap) / 2);
+  color: var(--color-secondary-1);
 }
 .highlights-item p {
-  margin: 10px 0 0;
+  margin: calc(var(--gap) / 2) 0 0;
 }
 .highlights-item .highlights-item-link {
-  padding-top: 10px;
+  padding-top: calc(var(--gap) / 2);
   margin-top: auto;
 }
 .highlights-item-link a {
-  color: #333;
+  color: var(--color-secondary-4);
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease-out;
 }
 @media (hover:hover) {
   .highlights-item-link a:hover {
-    color: #ee9972;
+    color: var(--color-secondary-1);
   }
 }

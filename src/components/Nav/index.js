@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './index.css';
+import { Routes, Route, Link, Router } from "react-router-dom";
+import Homepage from '../../pages/Homepage';
+import Reservations from '../../pages/Reservations';
 
 function Nav() {
   const [open, setOpen] = useState(false);
@@ -16,12 +19,12 @@ function Nav() {
       <button className={`hamburger ${openerClass}`} onClick={onHamburgerClick}>Open/Close menu</button>
       <nav>
         <ul>
-          <li><a href="#" onClick={onLink}>Home</a></li>
-          <li><a href="#" onClick={onLink}>About</a></li>
-          <li><a href="#" onClick={onLink}>Menu</a></li>
-          <li><a href="#" onClick={onLink}>Reservations</a></li>
-          <li><a href="#" onClick={onLink}>Order Online</a></li>
-          <li><a href="#" onClick={onLink}>Login</a></li>
+          <li><Link to="/" onClick={onLink}>Home</Link></li>
+          <li><Link to="/" onClick={onLink}>About</Link></li>
+          <li><Link to="/" onClick={onLink}>Menu</Link></li>
+          <li><Link to="/reservations" onClick={onLink}>Reservations</Link></li>
+          <li><Link to="/reservations" onClick={onLink}>Order Online</Link></li>
+          <li><Link to="/" onClick={onLink}>Login</Link></li>
         </ul>
       </nav>
     </>

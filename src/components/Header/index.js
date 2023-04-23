@@ -1,6 +1,7 @@
 import './index.css';
 import logo from '../../assets/images/Logo.svg';
 import Nav from "../Nav";
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -8,10 +9,10 @@ function Header() {
       <header>
         <div>
           <h1 className="logo">
-            <a href="#">
+            <Link to="/">
               <img src={logo} alt="Little Lemon logo" />
               Little Lemon
-            </a>
+            </Link>
           </h1>
           <Nav />
         </div>

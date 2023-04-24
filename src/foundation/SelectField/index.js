@@ -44,11 +44,11 @@ function SelectField({options, value, onChange, labelText, id}) {
   return (
     <>
       <div className={`select ${isActiveClass}`}>
-        <label onClick={(e) => onLabelClick(e)}>{labelText}</label>
+        <label onClick={(e) => onLabelClick(e)} aria-label={labelText}>{labelText}</label>
         <div className="select-holder">
           <button onClick={(e) => onMainButtonClick(e)}>{activeItem}</button>
           <ul>
-            {menuOpen && options.map((item) => (
+            {menuOpen && options && options.map((item) => (
               <li key={item} value={item}>
                 <button onClick={(e) => onItemClick(e, item)}>{item}</button>
               </li>

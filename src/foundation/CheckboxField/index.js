@@ -17,8 +17,8 @@ function CheckboxField({value, onChange, labelText, id}) {
   return (
     <>
       <div className="checkbox">
-        <input type="checkbox" checked={checked} onChange={onInputChange} id={id} />
-        <label htmlFor={id}>{labelText}</label>
+        <input type="checkbox" aria-checked={checked} checked={checked} onChange={onInputChange} id={id} />
+        <label htmlFor={id} aria-label={labelText}>{labelText}</label>
       </div>
     </>
   );

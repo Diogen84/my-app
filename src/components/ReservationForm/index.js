@@ -4,7 +4,7 @@ import './index.css';
 import InputField from '../../foundation/InputField';
 import CheckboxField from '../../foundation/CheckboxField';
 
-function ReservationForm() {
+function ReservationForm({availableTimes, dispatch}) {
   const [formState, setFormState] = useState({
     fullName: '',
     guests: 0,
@@ -21,9 +21,17 @@ function ReservationForm() {
     });
   };
 
+  const onChangeDate = (value) => {
+    dispatch({type: 'update'});
+    setFormState({
+      ...formState,
+      ...value
+    });
+  };
+
   useEffect(() => {
-    console.log(formState)
-  }, [formState]);
+    dispatch({ type: 'init' })
+  }, []);
 
   return (
     <>
@@ -66,7 +74,7 @@ function ReservationForm() {
                 <SelectField
                   id="res-time"
                   labelText="Choose time"
-                  options={['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']}
+                  options={availableTimes || []}
                   value={formState.time}
                   onChange={(value) => onChange({ time: value })}
                 />
@@ -79,7 +87,7 @@ function ReservationForm() {
                   id="res-date"
                   labelText="Choose date:"
                   value={formState.date}
-                  onChange={(value) => onChange({ date: value })}
+                  onChange={(value) => onChangeDate({ date: value })}
                 />
               </div>
               <div className="reservation-form-col">

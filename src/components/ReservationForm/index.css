@@ -1,0 +1,29 @@
+.reservation-form {
+  padding: var(--gap);
+}
+.reservation-form-holder {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .reservation-form-row {
+    display: flex;
+    align-item: flex-start;
+    gap: var(--gap);
+    width: 100%;
+  }
+  .reservation-form-col {
+    flex: 1;
+  }
+  .reservation-form-holder + .reservation-form-row {
+    padding-top: var(--gap);
+  }
+  .reservation-form-row:last-child .reservation-form-col:last-child {
+    display: flex;
+    align-items: center;
+  }
+  .reservation-form-submit {
+    padding-top: var(--gap);
+  }
+}

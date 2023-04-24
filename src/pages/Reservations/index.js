@@ -1,16 +1,21 @@
-import About from "../../components/About";
 import Hero from "../../components/Hero";
-import Highlights from "../../components/Highlights";
-import Testimonials from "../../components/Testimonials";
+import table from '../../assets/images/table.jpg';
+import ReservationForm from "../../components/ReservationForm";
 
 function Reservations() {
+  const heroData = {
+    title: 'Reservation',
+    subtitle: 'Book a table',
+    text: 'We are a family owned Mediteranian restaurant, focused on traditional recipes served with a modern twist.',
+    image: {
+      src: table,
+      alt: 'Book a table promo'
+    }
+  };
   return (
     <>
-      <Hero />
-      Reservations
-      <Highlights />
-      <Testimonials />
-      <About />
+      <Hero {...heroData} />
+      <ReservationForm />
     </>
   );
 }

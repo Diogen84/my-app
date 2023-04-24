@@ -1,20 +1,21 @@
 import './index.css';
-import restauranfood from '../../assets/images/restauranfood.jpg';
 
-function Hero() {
+function Hero({title, subtitle, text, btnText, btnHandler, image}) {
   return (
     <>
       <div className="hero">
         <div className="hero-wrapper">
           <div className="hero-content">
-            <h2>Little Lemon</h2>
-            <h3>Chicago</h3>
-            <p>We are a family owned Mediteranian restaurant, focused on traditional recipes served with a modern twist.</p>
-            <button className="btn">Reserve a table</button>
+            {title && <h2>{title}</h2>}
+            {subtitle && <h3>{subtitle}</h3>}
+            {text && <p>{text}</p>}
+            {btnText && btnHandler && <button className="btn" onClick={btnHandler}>{btnText}</button>}
           </div>
-          <div className="hero-image">
-            <img src={restauranfood} alt="Little lemon promo" />
-          </div>
+          {image?.src && image?.alt && (
+            <div className="hero-image">
+              <img src={image.src} alt={image.alt} />
+            </div>
+          )}
         </div>
       </div>
     </>

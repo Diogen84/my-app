@@ -2,7 +2,7 @@ header {
   padding: var(--gap);
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   background: var(--color-secondary-3);
   box-shadow: 2px 0 2px var(--color-secondary-4);
 }

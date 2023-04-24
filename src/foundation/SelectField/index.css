@@ -1,0 +1,77 @@
+.select {
+  margin: 0 0 var(--gap);
+}
+.select-holder {
+  position: relative;
+}
+.select.active .select-holder {
+  z-index: 3;
+}
+.select-holder ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.select-holder button {
+  text-align: left;
+  box-sizing: border-box;
+  padding: var(--gap);
+  display: block;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  border-width: 0 0 1px;
+  border-color: var(--color-secondary-4);
+  border-style: dashed;
+  color: var(--color-primary-1);
+  background: var(--color-secondary-3);
+  font: var(--font-form-1);
+}
+.select-holder > button {
+  border-radius: var(--border-radius);
+  box-shadow: 0px 2px 4px var(--color-secondary-4);
+  border: 1px solid var(--color-secondary-3);
+  position: relative;
+  z-index: 2;
+  position: relative;
+}
+.select-holder > button:after {
+  content: '';
+  border-top: calc(var(--gap) / 2) solid var(--color-primary-1);
+  border-left: calc(var(--gap) / 2) solid transparent;
+  border-right: calc(var(--gap) / 2) solid transparent;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: var(--gap);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.select.active .select-holder > button:after {
+  transform: translateY(-50%) rotateZ(180deg);
+}
+
+@media (hover:hover) {
+  .select-holder button:focus {
+    border-color: var(--color-secondary-4);
+    border: 1px solid var(--color-secondary-4)
+  }
+  .select-holder button:hover {
+    color: var(--color-secondary-3);
+    background: var(--color-primary-1);
+    border-color: var(--color-primary-1);
+  }
+  .select-holder > button:hover:after {
+    border-top-color: var(--color-secondary-3);
+  }
+}
+.select label {
+  color: var(--color-primary-1);
+  font: var(--font-form-1);
+  display: block;
+  margin: 0 0 calc(var(--gap) / 2);
+}

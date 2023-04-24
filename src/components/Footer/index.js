@@ -1,24 +1,25 @@
 import "./index.css";
 import footerLogo from '../../assets/images/FooterLogo.svg';
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
       <footer className="footer">
         <div className="footer-wrapper">
-          <a href="#" className="footer-logo">
+          <Link to="/" className="footer-logo">
             <img src={footerLogo} alt='footer logo' />
-          </a>
+          </Link>
           <div className="footer-links">
             <div>
               <h4>Doormat navigation</h4>
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Reservations</a></li>
-                <li><a href="#">Order Online</a></li>
-                <li><a href="#">Login</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/">About</Link></li>
+                <li><Link to="/">Menu</Link></li>
+                <li><Link to="/reservations">Reservations</Link></li>
+                <li><Link to="/reservations">Order Online</Link></li>
+                <li><Link to="/">Login</Link></li>
               </ul>
             </div>
             <div>

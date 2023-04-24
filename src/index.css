@@ -7,7 +7,8 @@ body {
 body {
   margin: 0;
   font: 10px arial, helvetica, sans-serif;
-  background: var(--color-secondary-3);
+  //background: var(--color-secondary-3);
+  background: var(--color-bg);
   color: var(--color-secondary-4);
 }
 
@@ -26,6 +27,8 @@ a {
 :root {
   --max-width: 1003px;
   --gap: 20px;
+  
+  --color-bg: #fff;
 
   --color-primary-1: #495e57;
   --color-primary-2: #f4ce14;
@@ -45,6 +48,8 @@ a {
   --font-text-1: 22px/1.2 Arial, Helvetica, sans-serif;
   --font-text-2: 18px/1 "Times New Roman", Times, serif;
   --font-text-3: 16px/1.5 Arial, Helvetica, sans-serif;
+
+  --font-form-1: bold 20px/1.2 Arial, Helvetica, sans-serif;
 }
 
 .btn {
@@ -58,6 +63,11 @@ a {
   display: block;
   cursor: pointer;
   transition: background-color 0.3s ease-out;
+}
+
+.btn.full-width {
+  width: 100%;
+  padding: var(--gap);
 }
 
 @media (hover:hover) {

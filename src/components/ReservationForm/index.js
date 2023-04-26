@@ -3,16 +3,46 @@ import SelectField from '../../foundation/SelectField';
 import './index.css';
 import InputField from '../../foundation/InputField';
 import CheckboxField from '../../foundation/CheckboxField';
+import ErrorField from '../../foundation/ErrorField';
 
 function ReservationForm({availableTimes, dispatch}) {
+  const [formSubmitClicked, setFormSubmitClicked] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [formState, setFormState] = useState({
     fullName: '',
     guests: 0,
-    type: 'Occasion',
+    type: '',
     orderInAdvance: false,
     date: '',
     time: ''
   });
+
+  const [errors, setErrors] = useState({
+    fullName: '',
+    guests: '',
+    date: '',
+    time: ''
+  });
+
+  useEffect(() => {
+    setErrors({
+      fullName: !formState.fullName ? 'Please enter your full name' : '',
+      guests: formState.guests <=0 || formState.guests > 10 ? 'Please select correct number of guests.' : '',
+      date: !formState.date ? 'Please select the date' : '',
+      time: !formState.time ? 'Please select the time after the date selection' : ''
+    });
+  }, [formState]);
+
+  useEffect(() => {
+    const isErrors = !!(Object.values(errors).filter((item) => item?.length > 0)?.length);
+    setIsError(isErrors);
+  }, [errors]);
+
+  useEffect(() => {
+    if (dispatch) {
+      dispatch({ type: 'init' });
+    }
+  }, []);
 
   const onChange = (value) => {
     setFormState({
@@ -29,9 +59,16 @@ function ReservationForm({availableTimes, dispatch}) {
     });
   };
 
-  useEffect(() => {
-    dispatch({ type: 'init' })
-  }, []);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitClicked(true);
+    const isNotValid = !!Object.values(errors).filter((item) => item?.length > 0)?.length;
+    if (isNotValid) {
+      console.log('form invalid');
+    } else {
+      console.log('form submitted');
+    }
+  };
 
   return (
     <>
@@ -47,6 +84,7 @@ function ReservationForm({availableTimes, dispatch}) {
                   value={formState.fullName}
                   onChange={(value) => onChange({ fullName: value })}
                 />
+                {formSubmitClicked && <ErrorField msg={errors.fullName} />}
               </div>
               <div className="reservation-form-col">
                 <InputField
@@ -54,30 +92,11 @@ function ReservationForm({availableTimes, dispatch}) {
                   min="1"
                   max="10"
                   id="guests"
-                  labelText="Number of guests"
+                  labelText="Number of guests:"
                   value={formState.guests}
                   onChange={(value) => onChange({ guests: value })}
                 />
-              </div>
-            </div>
-            <div className="reservation-form-row">
-              <div className="reservation-form-col">
-                <SelectField
-                  id="res-time"
-                  labelText="Occasion"
-                  options={['Occasion', 'Birthday', 'Engagement', 'Annivarsary']}
-                  value={formState.type}
-                  onChange={(value) => onChange({ type: value })}
-                />
-              </div>
-              <div className="reservation-form-col">
-                <SelectField
-                  id="res-time"
-                  labelText="Choose time"
-                  options={availableTimes || []}
-                  value={formState.time}
-                  onChange={(value) => onChange({ time: value })}
-                />
+                {formSubmitClicked && <ErrorField msg={errors.guests} />}
               </div>
             </div>
             <div className="reservation-form-row">
@@ -89,6 +108,29 @@ function ReservationForm({availableTimes, dispatch}) {
                   value={formState.date}
                   onChange={(value) => onChangeDate({ date: value })}
                 />
+                {formSubmitClicked && <ErrorField msg={errors.date} />}
+              </div>
+              <div className="reservation-form-col">
+                <SelectField
+                  id="res-time"
+                  labelText="Choose time:"
+                  options={availableTimes || []}
+                  value={formState.time}
+                  onChange={(value) => onChange({ time: value })}
+                />
+                {formSubmitClicked && <ErrorField msg={errors.time} />}
+              </div>
+            </div>
+            <div className="reservation-form-row">
+              <div className="reservation-form-col">
+                <SelectField
+                  id="occasion"
+                  labelText="Occasion:"
+                  options={['Birthday', 'Engagement', 'Annivarsary']}
+                  value={formState.type}
+                  onChange={(value) => onChange({ type: value })}
+                />
+                {formSubmitClicked && <ErrorField msg={errors.type} />}
               </div>
               <div className="reservation-form-col">
                 <CheckboxField
@@ -101,7 +143,14 @@ function ReservationForm({availableTimes, dispatch}) {
             </div>
           </div>
           <div className="reservation-form-submit">
-            <input type="submit" className="btn full-width" value="Make Your reservation" />
+            <input
+              data-testid="submit"
+              disabled={isError && formSubmitClicked}
+              type="submit"
+              className="btn full-width"
+              value="Make Your reservation"
+              onClick={(e) => onSubmit(e)}
+            />
           </div>
         </div>
       </form>

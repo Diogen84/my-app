@@ -3,13 +3,13 @@ import table from '../../assets/images/table.jpg';
 import ReservationForm from "../../components/ReservationForm";
 import { useReducer } from "react";
 
-function initializeTimes() {
+export function initializeTimes() {
   return {
     times: []
   };
 }
 
-function updateTimes(state, action) {
+export function updateTimes(state, action) {
   switch (action.type) {
     case 'update':
       return {

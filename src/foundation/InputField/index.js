@@ -25,7 +25,7 @@ function InputField({type, value, onChange, labelText, id, ...attr}) {
     <>
       <div className='input'>
         <label htmlFor={id} aria-label={labelText}>{labelText}</label>
-        <input type={type} ref={ref} onChange={onInputChange} id={id} {...attr} />
+        <input type={type} data-testid={id} ref={ref} onChange={onInputChange} id={id} {...attr} />
       </div>
     </>
   );

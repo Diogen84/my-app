@@ -3,17 +3,22 @@ import './index.css';
 
 function SelectField({options, value, onChange, labelText, id}) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(labelText);
+  const [selected, setSelected] = useState(value || labelText);
+  const [val, setVal] = useState(value);
 
   const onItemClick = (e, item) => {
     e.stopPropagation();
     e.preventDefault();
-    if (onChange) {
-      setActiveItem(item);
-      onChange(item);
-      setMenuOpen(false);
-    }
+    setSelected(item);
+    setVal(item);
   };
+
+  useEffect(() => {
+    setMenuOpen(false);
+    if (onChange) {
+      onChange(val);
+    }
+  }, [selected]);
 
   const onMainButtonClick = (e) => {
     e.stopPropagation();
@@ -32,7 +37,6 @@ function SelectField({options, value, onChange, labelText, id}) {
   };
 
   useEffect(() => {
-    setActiveItem(value ? value : labelText);
     window.addEventListener('click', windowClick);
     return () => {
       window.removeEventListener('click', windowClick);
@@ -44,13 +48,14 @@ function SelectField({options, value, onChange, labelText, id}) {
   return (
     <>
       <div className={`select ${isActiveClass}`}>
-        <label onClick={(e) => onLabelClick(e)} aria-label={labelText}>{labelText}</label>
+        <label htmlFor={id} onClick={(e) => onLabelClick(e)} aria-label={labelText}>{labelText}</label>
+        <input type="hidden" id={id} value={selected} />
         <div className="select-holder">
-          <button onClick={(e) => onMainButtonClick(e)}>{activeItem}</button>
+          <button onClick={(e) => onMainButtonClick(e)}>{selected}</button>
           <ul>
-            {menuOpen && options && options.map((item) => (
+            {menuOpen && options && options.map((item, i) => (
               <li key={item} value={item}>
-                <button onClick={(e) => onItemClick(e, item)}>{item}</button>
+                <button data-testid={`time-${i}`} onClick={(e) => onItemClick(e, item)}>{item}</button>
               </li>
             ))}
           </ul>

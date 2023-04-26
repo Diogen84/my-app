@@ -1,0 +1,5 @@
+.error {
+  color: var(--color-danger);
+  font: var(--font-text-3);
+  margin: 0 0 var(--gap);
+}

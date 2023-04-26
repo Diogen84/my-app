@@ -1,0 +1,13 @@
+.confirmed-booking {
+  padding: var(--gap);
+}
+.confirmed-booking-holder {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-primary-1);
+  font: var(--font-title-2);
+}
+.confirmed-booking-holder p {
+  margin: 0;
+}

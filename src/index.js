@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from './layout';
+import ConfirmedBooking from './pages/ConfirmedBooking';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/reservations",
         element: <Reservations />,
+      },
+      {
+        path: "/confirmedBooking",
+        element: <ConfirmedBooking />,
       }
     ]
   }

@@ -2,6 +2,7 @@ import Hero from "../../components/Hero";
 import table from '../../assets/images/table.jpg';
 import ReservationForm from "../../components/ReservationForm";
 import { useReducer } from "react";
+import { fetchAPI, submitAPI } from "../../api/api";
 
 export function initializeTimes() {
   return {
@@ -14,12 +15,12 @@ export function updateTimes(state, action) {
     case 'update':
       return {
         ...state,
-        times: ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']// action.payload
+        times: fetchAPI(action.payload)
       };
     case 'init':
       return {
         ...state,
-        times: []
+        times: fetchAPI(new Date())
       };
     default:
       throw new Error();
@@ -39,12 +40,15 @@ function Reservations() {
 
   const [state, dispatch] = useReducer(updateTimes, initializeTimes);
 
+  const submitForm = (data) => submitAPI(data);
+
   return (
     <>
       <Hero {...heroData} />
       <ReservationForm
         availableTimes={state.times}
         dispatch={dispatch}
+        submitForm={submitForm}
       />
     </>
   );

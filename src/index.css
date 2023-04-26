@@ -87,3 +87,17 @@ a {
     color: var(--color-secondary-4);
   }
 }
+
+#root {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}

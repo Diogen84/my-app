@@ -4,8 +4,11 @@ import './index.css';
 import InputField from '../../foundation/InputField';
 import CheckboxField from '../../foundation/CheckboxField';
 import ErrorField from '../../foundation/ErrorField';
+import { useNavigate } from 'react-router-dom';
+import { saveBookingToLocalStorage } from '../../utils';
 
-function ReservationForm({availableTimes, dispatch}) {
+function ReservationForm({availableTimes, dispatch, submitForm}) {
+  const navigate = useNavigate();
   const [formSubmitClicked, setFormSubmitClicked] = useState(false);
   const [isError, setIsError] = useState(false);
   const [formState, setFormState] = useState({
@@ -52,7 +55,7 @@ function ReservationForm({availableTimes, dispatch}) {
   };
 
   const onChangeDate = (value) => {
-    dispatch({type: 'update'});
+    dispatch({type: 'update', payload: new Date(formState.date)});
     setFormState({
       ...formState,
       ...value
@@ -67,6 +70,10 @@ function ReservationForm({availableTimes, dispatch}) {
       console.log('form invalid');
     } else {
       console.log('form submitted');
+      if (submitForm(formState)) {
+        saveBookingToLocalStorage(formState);
+        navigate('/confirmedBooking');
+      }
     }
   };
 

@@ -49,13 +49,13 @@ function SelectField({options, value, onChange, labelText, id}) {
     <>
       <div className={`select ${isActiveClass}`}>
         <label htmlFor={id} onClick={(e) => onLabelClick(e)} aria-label={labelText}>{labelText}</label>
-        <input type="hidden" id={id} value={selected} />
+        <input id={id} type="hidden" value={selected} />
         <div className="select-holder">
-          <button onClick={(e) => onMainButtonClick(e)}>{selected}</button>
+          <button id={`${id}-button`} onClick={(e) => onMainButtonClick(e)}>{selected}</button>
           <ul>
-            {menuOpen && options && options.map((item, i) => (
+            {menuOpen && options?.map((item, i) => (
               <li key={item} value={item}>
-                <button data-testid={`time-${i}`} onClick={(e) => onItemClick(e, item)}>{item}</button>
+                <button id={`${id}-${i}`} onClick={(e) => onItemClick(e, item)}>{item}</button>
               </li>
             ))}
           </ul>

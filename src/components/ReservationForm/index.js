@@ -79,7 +79,7 @@ function ReservationForm({availableTimes, dispatch, submitForm}) {
 
   return (
     <>
-      <form className="reservation-form">
+      <form className="reservation-form" data-testid="reservation-form">
         <div className="reservation-form-holder">
           <div>
             <div className="reservation-form-row">
@@ -151,6 +151,7 @@ function ReservationForm({availableTimes, dispatch, submitForm}) {
           </div>
           <div className="reservation-form-submit">
             <input
+              aria-label="Submit Form"
               data-testid="submit"
               disabled={isError && formSubmitClicked}
               type="submit"

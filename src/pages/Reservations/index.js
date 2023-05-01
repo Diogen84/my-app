@@ -44,12 +44,12 @@ function Reservations() {
 
   return (
     <>
-      <Hero {...heroData} />
-      <ReservationForm
-        availableTimes={state.times}
-        dispatch={dispatch}
-        submitForm={submitForm}
-      />
+        <Hero {...heroData} />
+        <ReservationForm
+          availableTimes={state.times}
+          dispatch={dispatch}
+          submitForm={submitForm}
+        />
     </>
   );
 }
